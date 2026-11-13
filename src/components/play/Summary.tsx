@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react';
+import { LOGO_URL } from '../../lib/assets';
 import confetti from 'canvas-confetti';
 import { Home, Pencil, RotateCcw, Trophy } from 'lucide-react';
 import type { Session } from '../../types';
@@ -93,7 +94,7 @@ export function Summary({ session, celebrate }: { session: Session; celebrate?: 
   return (
     <div className="mx-auto max-w-5xl px-4 pb-16 pt-6">
       <div className="text-center">
-        <img src="/logo.png" alt="SFU SSA logo" className="mx-auto mb-3 h-20 w-20 rounded-full bg-white object-cover shadow-lg ring-2 ring-gold-500/70" />
+        <img src={LOGO_URL} alt="SFU SSA logo" className="mx-auto mb-3 h-20 w-20 rounded-full bg-white object-cover shadow-lg ring-2 ring-gold-500/70" />
         <Trophy className="mx-auto text-gold-500" size={56} />
         <div className="mt-1 text-sm font-bold uppercase tracking-[0.3em] text-blue-200/70">{session.game.title}</div>
         <h1 className="gold-shimmer font-display text-[clamp(40px,8vw,96px)] leading-none">

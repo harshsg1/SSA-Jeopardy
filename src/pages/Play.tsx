@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { LOGO_URL } from '../lib/assets';
 import { ArrowLeft, Keyboard, Maximize, Minimize, Pause, Play as PlayIcon, Settings2, Shuffle, Trophy, Undo2 } from 'lucide-react';
 import type { Session } from '../types';
 import { useStore } from '../store/store';
@@ -187,7 +188,7 @@ function LiveGame({ session, apply }: { session: Session; apply: (fn: (s: Sessio
           <IconButton label="Save & exit to dashboard" onClick={() => navigate('/')}>
             <ArrowLeft size={20} />
           </IconButton>
-          <img src="/logo.png" alt="SFU SSA logo" className="h-9 w-9 shrink-0 rounded-full bg-white object-cover ring-2 ring-gold-500/70" />
+          <img src={LOGO_URL} alt="SFU SSA logo" className="h-9 w-9 shrink-0 rounded-full bg-white object-cover ring-2 ring-gold-500/70" />
           <h1 className="min-w-0 flex-1 truncate text-xl sm:text-2xl" style={{ fontFamily: font, color: 'var(--value-color)' }}>
             {session.game.title}
             {session.practice && <span className="ml-2 rounded bg-emerald-600 px-1.5 py-0.5 align-middle font-sans text-xs font-bold text-white">PRACTICE</span>}
@@ -240,7 +241,7 @@ function LiveGame({ session, apply }: { session: Session; apply: (fn: (s: Sessio
         <>
           {presentation && (
             <div className="flex items-center justify-center gap-3 px-4 pt-3 text-[clamp(22px,3.2vw,52px)] leading-none" style={{ fontFamily: font, color: 'var(--value-color)' }}>
-              <img src="/logo.png" alt="SFU SSA logo" className="h-[1.3em] w-[1.3em] shrink-0 rounded-full bg-white object-cover ring-2 ring-gold-500/70" />
+              <img src={LOGO_URL} alt="SFU SSA logo" className="h-[1.3em] w-[1.3em] shrink-0 rounded-full bg-white object-cover ring-2 ring-gold-500/70" />
               {session.game.title}
             </div>
           )}

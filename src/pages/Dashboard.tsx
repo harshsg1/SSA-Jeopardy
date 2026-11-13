@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
+import { LOGO_URL } from '../lib/assets';
 import {
   BarChart3,
   BookOpen,
@@ -30,7 +31,7 @@ export function Logo({ size = 'lg' }: { size?: 'lg' | 'sm' }) {
   return (
     <div className="flex items-center gap-3">
       <img
-        src="/logo.png"
+        src={LOGO_URL}
         alt="SFU SSA logo"
         className={`shrink-0 rounded-full bg-white object-cover shadow-lg ring-2 ring-gold-500/70 ${size === 'lg' ? 'h-14 w-14' : 'h-10 w-10'}`}
       />

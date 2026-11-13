@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { LOGO_URL } from '../../lib/assets';
 import { Check, Eye, EyeOff, Lock, Pause, Play, Trophy, X } from 'lucide-react';
 import type { Session, SessionTeam } from '../../types';
 import * as E from '../../game/engine';
@@ -109,7 +110,7 @@ export function FinalRound({ session, apply }: { session: Session; apply: Apply 
   return (
     <div className="flex h-full flex-col" style={themeStyle(session.game)}>
       <div className="px-4 pt-4 text-center">
-        <img src="/logo.png" alt="SFU SSA logo" className="mx-auto mb-2 h-14 w-14 rounded-full bg-white object-cover ring-2 ring-gold-500/70" />
+        <img src={LOGO_URL} alt="SFU SSA logo" className="mx-auto mb-2 h-14 w-14 rounded-full bg-white object-cover ring-2 ring-gold-500/70" />
         <div className="gold-shimmer font-display text-[clamp(32px,6vw,84px)] leading-none">FINAL JEOPARDY</div>
         <div className="mx-auto mt-2 inline-block rounded-lg px-4 py-1 text-xl font-bold uppercase sm:text-3xl" style={{ background: 'var(--tile)', fontFamily: font }}>
           {fr.category || 'Final Category'}
