@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-navy-950: #030620;
+  --color-navy-900: #060b3a;
+  --color-navy-800: #0b1452;
+  --color-navy-700: #10206e;
+  --color-royal-600: #1d3bd1;
+  --color-royal-500: #2f54ff;
+  --color-gold-400: #ffd34d;
+  --color-gold-500: #ffcc33;
+  --color-gold-600: #e6a800;
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #12207a 0%, #060b3a 45%, #030620 100%) fixed;
+  color: #f1f4ff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #ffcc33;
+  color: #060b3a;
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3a99 transparent;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.text-shadow-game {
+  text-shadow: 0.06em 0.06em 0 rgba(0, 0, 0, 0.75);
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(20, 32, 110, 0.55), rgba(8, 14, 60, 0.75));
+  border: 1px solid rgba(120, 140, 255, 0.18);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+.input {
+  width: 100%;
+  background: rgba(3, 6, 32, 0.6);
+  border: 1px solid rgba(120, 140, 255, 0.25);
+  border-radius: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input:focus {
+  border-color: #ffcc33;
+  box-shadow: 0 0 0 3px rgba(255, 204, 51, 0.2);
+}
+.input::placeholder {
+  color: rgba(200, 210, 255, 0.35);
+}
+select.input option {
+  background: #0b1452;
+}
+
+/* Board tiles */
+.tile {
+  position: relative;
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.2s ease;
+}
+.tile:not(:disabled):hover {
+  transform: scale(1.04);
+  filter: brightness(1.18);
+  z-index: 2;
+  box-shadow: 0 0 0 3px var(--value-color, #ffcc33), 0 12px 30px -8px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes zoom-in {
+  from { transform: scale(0.35); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes fade-up {
+  from { transform: translateY(14px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+@keyframes float-delta {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-36px); opacity: 0; }
+}
+@keyframes dd-spin {
+  0% { transform: scale(0.1) rotate(-540deg); opacity: 0; }
+  70% { transform: scale(1.08) rotate(8deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(255, 204, 51, 0.7); }
+  100% { box-shadow: 0 0 0 14px rgba(255, 204, 51, 0); }
+}
+
+.anim-zoom { animation: zoom-in 0.38s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+.anim-fade-up { animation: fade-up 0.35s ease both; }
+.anim-pop { animation: pop 0.45s ease; }
+.anim-dd { animation: dd-spin 1s cubic-bezier(0.2, 0.9, 0.3, 1) both; }
+.anim-float { animation: float-delta 1.4s ease-out forwards; }
+.anim-pulse-ring { animation: pulse-ring 1.2s ease-out infinite; }
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #e6a800 0%, #fff1b8 25%, #ffcc33 50%, #fff1b8 75%, #e6a800 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
